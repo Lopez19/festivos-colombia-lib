@@ -45,7 +45,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lopez19/festivos-colombia-typescript.git"
+    "url": "git+https://github.com/Lopez19/festivos-colombia-lib.git"
   },
   "keywords": [
     "festivos",
@@ -54,9 +54,9 @@
   ],
   "description": "Libreria para obtener los festivos de Colombia en un año especifico",
   "bugs": {
-    "url": "https://github.com/Lopez19/festivos-colombia-typescript/issues"
+    "url": "https://github.com/Lopez19/festivos-colombia-lib/issues"
   },
-  "homepage": "https://github.com/Lopez19/festivos-colombia-typescript#readme",
+  "homepage": "https://github.com/Lopez19/festivos-colombia-lib#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.0.1",
     "husky": "^8.0.3",

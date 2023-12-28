@@ -78,7 +78,6 @@ const getNameDay = (date: string): string => {
     'Domingo',
   ];
   const day = new Date(date).getDay();
-  day === 0 ? 6 : day - 1;
   return days[day];
 };
 

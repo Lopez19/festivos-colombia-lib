@@ -1,103 +1,79 @@
-# TSDX User Guide
+<div align="center" id="top"> 
+  <img src="https://e7.pngegg.com/pngimages/146/444/png-clipart-flag-of-colombia-map-computer-icons-colombia-road-map-map.png" alt="Festivos Colombia Typescript" width="100" />
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+&#xa0;
 
-> This TSDX setup is meant for developing libraries (not apps!) that can be published to NPM. If you’re looking to build a Node app, you could use `ts-node-dev`, plain `ts-node`, or simple `tsc`.
+</div>
 
-> If you’re new to TypeScript, checkout [this handy cheatsheet](https://devhints.io/typescript)
+<h1 align="center">Festivos Colombia (TypeScript)</h1>
 
-## Commands
+<div align="center">
 
-TSDX scaffolds your new library inside `/src`.
+[![Lopez19 - festivos-colombia-typescript](https://img.shields.io/static/v1?label=Lopez19&message=festivos-colombia-typescript&color=blue&logo=github)](https://github.com/Lopez19/festivos-colombia-typescript 'Go to GitHub repo')
 
-To run TSDX, use:
+[![stars - festivos-colombia-typescript](https://img.shields.io/github/stars/Lopez19/festivos-colombia-typescript?style=social)](https://github.com/Lopez19/festivos-colombia-typescript)
+
+[![forks - festivos-colombia-typescript](https://img.shields.io/github/forks/Lopez19/festivos-colombia-typescript?style=social)](https://github.com/Lopez19/festivos-colombia-typescript)
+
+[![GitHub tag](https://img.shields.io/github/tag/Lopez19/festivos-colombia-typescript?include_prereleases=&sort=semver&color=blue)](https://github.com/Lopez19/festivos-colombia-typescript/releases/)
+
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+
+</div>
+
+<p align="center">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0; 
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-usage">Usage</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/Lopez19" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: About
+
+Este proyecto es una biblioteca de TypeScript que proporciona funcionalidades para calcular y obtener los días festivos de un año específico en Colombia. Las funciones incluyen la capacidad de calcular el Domingo de Pascua para cualquier año entre 1583 y 4099, obtener el próximo lunes a partir de una fecha dada, sumar un número específico de días a una fecha, obtener el nombre del día de la semana para una fecha dada y obtener los días festivos para un año específico.
+
+## :sparkles: Features
+
+:heavy_check_mark: Feature 1: Obtiene los días festivos por año.
+
+## :rocket: Technologies
+
+The following tools were used in this project:
+
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+## :white_check_mark: Requirements
+
+Antes de comenzar :checkered_flag:, necesitas tener [Git](https://git-scm.com) y [Node](https://nodejs.org/en/) instalados.
+
+## :checkered_flag: Starting
 
 ```bash
-npm start # or yarn start
+
+# Install
+$ npm i festivos-colombia-lib
+
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+## :checkered_flag: Usage
 
-To do a one-off build, use `npm run build` or `yarn build`.
-
-To run tests, use `npm test` or `yarn test`.
-
-## Configuration
-
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
-
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle Analysis
-
-[`size-limit`](https://github.com/ai/size-limit) is set up to calculate the real cost of your library with `npm run size` and visualize the bundle with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+```ts
+import { getHolidaysByYear } from 'festivos-colombia-lib';
 ```
 
-### Rollup
+## :memo: License
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-### TypeScript
+Made with :heart: by <a href="https://github.com/Lopez19" target="_blank">Horacio Lopez - @Lopez19</a>
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+&#xa0;
 
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
+<a href="#top">Back to top</a>

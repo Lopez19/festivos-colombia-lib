@@ -18,7 +18,9 @@
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
-    "semantic-release": "semantic-release --branches master"
+    "semantic-release": "semantic-release --branches master",
+    "commit": "git-cz",
+    "acp": "git add . && npm run commit && git push -u origin master"
   },
   "husky": {
     "hooks": {
@@ -60,11 +62,17 @@
   "homepage": "https://github.com/Lopez19/festivos-colombia-lib#readme",
   "devDependencies": {
     "@size-limit/preset-small-lib": "^11.0.1",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
+    "semantic-release": "^22.0.12",
     "size-limit": "^11.0.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.6.2",
-    "typescript": "^3.9.10",
-    "semantic-release": "^22.0.12"
+    "typescript": "^3.9.10"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

@@ -21,7 +21,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -45,16 +44,17 @@ jobs:
     needs: [quality]
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
       - name: Test
         run: npm run test -- --ci --coverage --maxWorkers=2
 
-      - name: Build
+      - name: Publish to NPM
       - run: npm run semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

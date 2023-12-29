@@ -25,9 +25,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - run: npm ci
-      - run: npm test
+      - run: npm run test -- --ci --coverage --maxWorkers=2
       - run: npm run lint
   publish:
     runs-on: ubuntu-latest

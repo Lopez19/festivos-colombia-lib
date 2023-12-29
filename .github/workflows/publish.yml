@@ -36,6 +36,9 @@ jobs:
       - name: Test
         run: npm run test -- --ci --coverage --maxWorkers=2
 
+      - name: Build
+        run: npm run build
+
   publish:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/master' }}

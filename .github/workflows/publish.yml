@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm lint
+      - run: npm run lint
       - run: npm run test -- --ci --coverage --maxWorkers=2
       - run: npm run build
 
@@ -39,7 +39,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm lint
+      - run: npm run lint
       - run: npm run test -- --ci --coverage --maxWorkers=2
       - run: npm run semantic-release
         env:

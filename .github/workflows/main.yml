@@ -1,23 +1,26 @@
 name: CI
-on: [push]
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: '*'
 jobs:
-  build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
+  quality:
+    name: Build, lint, and test on Node ${{ matrix.node-version }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['18.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node-version: [14.x, 16.x, 18.x]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
+      - name: Use Node ${{ matrix.node-version}}
+        uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ matrix.node-version }}
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
@@ -30,3 +33,34 @@ jobs:
 
       - name: Build
         run: npm run build
+
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latestx
+    if: ${{ github.ref == 'refs/heads/master' }}
+    needs: [quality]
+    strategy:
+      matrix:
+        node: ['18.x']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+
+      - name: Test
+        run: npm run test -- --ci --coverage --maxWorkers=2
+
+      - name: Publish
+        run: npm run semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

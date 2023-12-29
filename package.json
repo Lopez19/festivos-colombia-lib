@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -17,7 +17,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "semantic-release": "semantic-release --branches master"
   },
   "husky": {
     "hooks": {
@@ -45,7 +46,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lopez19/festivos-colombia-lib.git"
+    "url": "https://github.com/Lopez19/festivos-colombia-lib.git"
   },
   "keywords": [
     "festivos",
@@ -63,6 +64,7 @@
     "size-limit": "^11.0.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.6.2",
-    "typescript": "^3.9.10"
+    "typescript": "^3.9.10",
+    "semantic-release": "^22.0.12"
   }
 }
